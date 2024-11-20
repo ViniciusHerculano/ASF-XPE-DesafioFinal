@@ -6,18 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioFinal.Api.Controllers
 {
-    [Controller]
-    [Route("/api/clientes")]
-    public class DominioController : ControllerBase
+    [ApiController]
+    [Route("api/clientes")]
+    public class ClientesController : ControllerBase
     {
         private readonly IClienteService _clienteService;
-        public DominioController(IClienteService clienteService)
+        public ClientesController(IClienteService clienteService)
         {
             _clienteService = clienteService;
         }
 
         [HttpPost]
-        [Route("/adicionar")]
+        [Route("adicionar")]
         public async Task<IActionResult> AdicionarCliente(ClienteViewModel clienteVw)
         {
             var retorno = await _clienteService.Adicionar(clienteVw);
@@ -25,7 +25,7 @@ namespace DesafioFinal.Api.Controllers
         }
 
         [HttpPut]
-        [Route("/atualizar/{id}")]
+        [Route("atualizar/{id}")]
         public async Task<IActionResult> AtualizarCliente(Guid id, [FromBody] ClienteViewModel clienteVw)
         {
             var retorno = await _clienteService.Atualizar(id, clienteVw);
@@ -33,7 +33,7 @@ namespace DesafioFinal.Api.Controllers
         }
 
         [HttpGet]
-        [Route("/obter-por-id")]
+        [Route("obter-por-id")]
         public async Task<IActionResult> ObterPorId(Guid id)
         {
             var retorno = await _clienteService.ObterPorId(id);
@@ -41,7 +41,7 @@ namespace DesafioFinal.Api.Controllers
         }
 
         [HttpGet]
-        [Route("/obter-por-nome")]
+        [Route("obter-por-nome")]
         public async Task<IActionResult> ObterPorNome(string nome)
         {
             var retorno = await _clienteService.ObterPorNome(nome);
@@ -49,7 +49,7 @@ namespace DesafioFinal.Api.Controllers
         }
 
         [HttpGet]
-        [Route("/obter-todos")]
+        [Route("obter-todos")]
         public async Task<IActionResult> ObterTodos()
         {
             var retorno = await _clienteService.ObterTodos();
@@ -57,7 +57,7 @@ namespace DesafioFinal.Api.Controllers
         }
 
         [HttpGet]
-        [Route("/contar")]
+        [Route("contar")]
         public async Task<IActionResult> ContarClientes()
         {
             var retorno = await _clienteService.ContarClientes();
@@ -65,7 +65,7 @@ namespace DesafioFinal.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("/remover")]
+        [Route("remover")]
         public async Task<IActionResult> ContarClientes(Guid id)
         {
             await _clienteService.Remover(id);

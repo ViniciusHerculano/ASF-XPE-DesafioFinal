@@ -13,10 +13,10 @@ namespace DesafioFinal.Api.Models
             Email = email;
         }
 
-        public void AtualizarDados(ClienteViewModel clienteVw)
+        public void AtualizarDados(string nome, string email)
         {
-            Nome = clienteVw.Nome;
-            Email = clienteVw.Email;
+            Nome = nome;
+            Email = email;
         }
 
         public Guid Id { get; private set; }
