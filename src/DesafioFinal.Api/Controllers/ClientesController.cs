@@ -66,7 +66,7 @@ namespace DesafioFinal.Api.Controllers
 
         [HttpDelete]
         [Route("remover")]
-        public async Task<IActionResult> ContarClientes(Guid id)
+        public async Task<IActionResult> RemoverCliente(Guid id)
         {
             await _clienteService.Remover(id);
             return Ok();

@@ -22,6 +22,10 @@ namespace DesafioFinal.Api.Services
         public async Task<Cliente> Atualizar(Guid id, ClienteViewModel clienteVw)
         {
             var cliente = await _clienteRepository.ObterPorId(id);
+
+            if (cliente == null)
+                return null;
+
             cliente.AtualizarDados(clienteVw.Nome, clienteVw.Email);
             await _clienteRepository.Atualizar(cliente);
             return cliente;
